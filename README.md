@@ -56,8 +56,9 @@ In this exercise you will:
 #### Reflection Questions
 
 1. **What does `typedef struct { ... } Point;` achieve compared to `struct Point { ... };`?**
-2. **How does the compiler lay out a `Point` in memory?**
-
+   There is no difference in the output when using one or the other. The difference is while using typedef the struct datatype can be named just "Point". otherwise         without it has to be called upon with struct Point.
+3. **How does the compiler lay out a `Point` in memory?**
+   The compiler reserves for each double 8 Bytes of memory. For x and y which equals 16 Bytes. 
 ---
 
 ### Task 1: Linking the Math Library (`-lm`)
@@ -74,7 +75,10 @@ In this exercise you will:
 #### Reflection Questions
 
 1. **Why is the `-lm` flag necessary to resolve `sqrt`?**
+   The Compiler knowes from including the math.h that the function sqrt is there and defined. But it can not link it from the library. with -lm the linker knows to featch the information and use them.
+
 2. **What happens if you omit `-lm` when calling math functions?**
+   The program gets compiled but the Linker can not find the definition of sqrt.
 
 ---
 
