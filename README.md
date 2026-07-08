@@ -216,7 +216,9 @@ In this exercise you will:
 #### Reflection Questions
 
 1. **What files does `libjansson-dev` install, and where?**
+   The Header gets installed under /usr/include/jansson.h. The static library under /usr/lib/x86_64-linux-gnu/libjansson.a
 2. **How does the linker know where to find `-ljansson`?**
+   The linker searches the system path in the following path: /usr/lib, /usr/lib/x86_64-linux-gnu, /usr/local/lib
 
 ---
 
@@ -228,7 +230,7 @@ In this exercise you will:
 2. Clone and build:
 
    ```bash
-   git clone https://github.com/sesh/strbuf.git
+   git clone cd
    cd strbuf
    make
    ```
@@ -249,8 +251,9 @@ In this exercise you will:
 #### Reflection Questions
 
 1. **What does `make install` do, and how does `PREFIX` affect installation paths?**
+make install copies the Header and library into the /usr/local/ path. The prefix is used to not overwrite already writen directories or files.
 2. **How can you inspect a library’s exported symbols to verify installation?**
-
+with "nm" name list you can check the library path. With "ldconfig -p" you can check if ldconfig knows the library.
 ---
 
 **Remember:** Stop after **90 minutes** and record where you stopped.
