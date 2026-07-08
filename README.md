@@ -109,7 +109,10 @@ In this exercise you will:
 #### Reflection Questions
 
 1. **What are the advantages and drawbacks of a header-only library?**
-2. **How does `static inline` affect linkage and code size?**
+   Advantages: Nothing has to be linked and the compiler sees the whole code directly.
+   Disadvantage: Bigger Libraries need longer to compile.
+3. **How does `static inline` affect linkage and code size?**
+   static function means that each .c gets their own local version. inline means that the compiler can try to call the funktion directly. Without geting back to the        library and compiling it there.
 
 ---
 
@@ -133,7 +136,10 @@ In this exercise you will:
 #### Reflection Questions
 
 1. **Why must you include `solutions/util.o` when linking instead of just the header?**
+   The util.h header just gives the clamp function, but the util.o has the machine code. Without util.o the linker doesnt know the code just the name.
 2. **What symbol resolution occurs at compile vs. link time?**
+   The compiler checks if the function clamp is known and in the header and als the datatypes are correct.
+   The linker links everything from the libraries and the .o files and writes it in the memory of the function.
 
 ---
 
@@ -164,7 +170,16 @@ In this exercise you will:
 #### Reflection Questions
 
 1. **How does `ar` create an archive, and how does the linker find `-lutil`?**
+   The archiver takes the .o files and stores them in an .a file. The linker looks in /usr/local/lib for a file named libutil.a which we just created.
+   Now its on a standard library path.
 2. **What is the purpose of `ldconfig`?**
+   "ldconfig creates the necessary links and cache to the most recent
+       shared libraries found in the directories specified on the command
+       line, in the file /etc/ld.so.conf, and in the trusted directories,
+       /lib and /usr/lib."
+   https://www.man7.org/linux/man-pages/man8/ldconfig.8.html
+
+   ldconfig is just used to create links for dynamic libraries .so. Static libraries .a are already linked and dont need to be linked in the cache.
 
 ---
 
